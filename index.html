@@ -17,13 +17,22 @@
         alert('Good Job!');
       }
 
+      function Counter(props){
+        return <div>0:{props.color}</div>;
+      }
+
       const name = 'suzuki'
       ReactDOM.render(
+        <div>
+        <Counter color="red"/>
+        <Counter color="blue"/>
+        <Counter color="yellow"/>
+        </div>,
         // <p>Hello!!{name.toUpperCase()}</p>, 
         // <hr/>
         // <p> Yeah!</p>
         // <div className="box"></div>,
-        <div style={{width:100, height:100, backgroundColor:'pink'}}onClick={showMessage}></div>,
+        // <div style={{width:100, height:100, backgroundColor:'pink'}}onClick={showMessage}></div>,
         document.getElementById('root')
       )
     })();
