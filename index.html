@@ -18,15 +18,17 @@
       }
 
       function Counter(props){
-        return <div>0:{props.color}</div>;
+        return <li style={{backgroundColor:props.color}}>0</li>;
       }
 
       const name = 'suzuki'
       ReactDOM.render(
-        <div>
-        <Counter color="red"/>
-        <Counter color="blue"/>
-        <Counter color="yellow"/>
+        <div className="container">
+         <ul>
+          <Counter color="red"/>
+          <Counter color="blue"/>
+          <Counter color="yellow"/>
+        </ul>
         </div>,
         // <p>Hello!!{name.toUpperCase()}</p>, 
         // <hr/>
