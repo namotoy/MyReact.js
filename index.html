@@ -18,7 +18,27 @@
       }
 
       function Counter(props){
-        return <li style={{backgroundColor:props.color}}>0</li>;
+
+        // function countUp(color){
+        //   alert(color);
+        // }
+        function countUp(e,color){
+          e.preventDefault();
+          alert(color);
+        }
+        // return(
+        //   <li style={{backgroundColor:props.color}} onClick={() => 
+        //     countUp(props.color)}>
+        //     0
+        //   </li>
+        //   );
+        return(
+          <li style={{backgroundColor:props.color}}>
+            <a href="#" onClick={e => countUp(e,props.color)}>
+            0
+            </a>
+          </li>
+          );
       }
 
       const name = 'suzuki'
@@ -26,7 +46,7 @@
         <div className="container">
          <ul>
           <Counter color="red"/>
-          <Counter color="blue"/>
+          <Counter color="skyblue"/>
           <Counter color="yellow"/>
         </ul>
         </div>,
