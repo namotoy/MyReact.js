@@ -44,12 +44,22 @@
           constructor(props){
             super(props);
             this.state = {
-              count: 50
+              count: 0,
+              // message: 'Congratulations!',
             };
+            this.countUp = this.countUp.bind(this);
+          }
+          countUp(){
+            // this.state.count = this.state.count + 1;
+            this.setState(prevState =>{
+              return {
+                count: prevState.count + 1
+              };
+            });
           }
           render(){
             return(
-              <li style={{backgroundColor:this.props.color}}>
+              <li style={{backgroundColor:this.props.color}} onClick={this.countUp}>
                 {this.state.count}
                 </li>
                 );
@@ -57,14 +67,27 @@
             }
 
       const name = 'suzuki'
+
+      class App extends React.Component{
+        constructor(){
+          super();
+        }
+        render(){
+          return(
+            <div className="container">
+              <ul>
+                <Counter color="red"/>
+                <Counter color="skyblue"/>
+                <Counter color="yellow"/>
+              </ul>
+              <div>TOTAL INVENTORY: 100</div>
+            </div>
+          );
+        }
+      }
       ReactDOM.render(
-        <div className="container">
-         <ul>
-          <Counter color="red"/>
-          <Counter color="skyblue"/>
-          <Counter color="yellow"/>
-        </ul>
-        </div>,
+        <App/>,
+        
         // <p>Hello!!{name.toUpperCase()}</p>, 
         // <hr/>
         // <p> Yeah!</p>
