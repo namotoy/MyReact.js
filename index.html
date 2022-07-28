@@ -13,33 +13,48 @@
    <script type="text/babel">
     (()=> {
 
-      function showMessage(){
-        alert('Good Job!');
-      }
+      // function showMessage(){
+      //   alert('Good Job!');
+      // }
 
-      function Counter(props){
+      // function Counter(props){
 
         // function countUp(color){
         //   alert(color);
         // }
-        function countUp(e,color){
-          e.preventDefault();
-          alert(color);
-        }
+        // function countUp(e,color){
+        //   e.preventDefault();
+        //   alert(color);
+        // }
         // return(
         //   <li style={{backgroundColor:props.color}} onClick={() => 
         //     countUp(props.color)}>
         //     0
         //   </li>
         //   );
-        return(
-          <li style={{backgroundColor:props.color}}>
-            <a href="#" onClick={e => countUp(e,props.color)}>
-            0
-            </a>
-          </li>
-          );
-      }
+        // return(
+        //   <li style={{backgroundColor:props.color}}>
+        //     <a href="#" onClick={e => countUp(e,props.color)}>
+        //     0
+        //     </a>
+        //   </li>
+        //   );
+        
+        class Counter extends React.Component{
+          constructor(props){
+            super(props);
+            this.state = {
+              count: 50
+            };
+          }
+          render(){
+            return(
+              <li style={{backgroundColor:this.props.color}}>
+                {this.state.count}
+                </li>
+                );
+              }
+            }
 
       const name = 'suzuki'
       ReactDOM.render(
