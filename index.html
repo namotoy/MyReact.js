@@ -40,52 +40,65 @@
         //   </li>
         //   );
         
-        class Counter extends React.Component{
-          constructor(props){
-            super(props);
-            this.state = {
-              count: 0,
-              // message: 'Congratulations!',
-            };
-            this.countUp = this.countUp.bind(this);
-          }
-          countUp(){
-            // this.state.count = this.state.count + 1;
-            this.setState(prevState =>{
-              return {
-                count: prevState.count + 1
-              };
-            });
-          }
-          render(){
-            return(
-              <li style={{backgroundColor:this.props.color}} onClick={this.countUp}>
-                {this.state.count}
-                </li>
-                );
-              }
-            }
+        // class Counter extends React.Component{
+        //   constructor(props){
+        //     super(props);
+        //     this.state = {
+        //       count: 0,
+        //       // message: 'Congratulations!',
+        //     };
+        //     this.countUp = this.countUp.bind(this);
+        //   }
+        //   countUp(){
+        //     // this.state.count = this.state.count + 1;
+        //     this.setState(prevState =>{
+        //       return {
+        //         count: prevState.count + 1
+        //       };
+        //     });
+        //   }
+        //   render(){
+        //     return(
+             
+        //         );
+        //       }
+        //     }
+      // const name = 'suzuki'
 
-      const name = 'suzuki'
+      function Counter(props){
+        return(
+          <li style={{backgroundColor:props.counter.color}} >
+            {props.counter.id}:{props.counter.count}
+          </li>
+        );
+      }
 
       class App extends React.Component{
         constructor(){
           super();
+          this.state = {
+            counters: [
+              {id: 'A', count: 0, color: 'green'},
+              {id: 'B', count: 0, color: 'silver'},
+              {id: 'C', count: 0, color: 'tomato'}
+            ]
+          };
         }
         render(){
           return(
             <div className="container">
               <ul>
-                <Counter color="red"/>
-                <Counter color="skyblue"/>
-                <Counter color="yellow"/>
+                <Counter counter={this.state.counters[0]}/>
+                <Counter counter={this.state.counters[1]}/>
+                <Counter counter={this.state.counters[2]}/>
               </ul>
               <div>TOTAL INVENTORY: 100</div>
             </div>
           );
         }
       }
-      ReactDOM.render(
+
+    ReactDOM.render(
         <App/>,
         
         // <p>Hello!!{name.toUpperCase()}</p>, 
@@ -94,7 +107,7 @@
         // <div className="box"></div>,
         // <div style={{width:100, height:100, backgroundColor:'pink'}}onClick={showMessage}></div>,
         document.getElementById('root')
-      )
+      );
     })();
    </script>
 </body>
