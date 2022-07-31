@@ -67,7 +67,7 @@
 
       function Counter(props){
         return(
-          <li style={{backgroundColor:props.counter.color}} >
+          <li style={{backgroundColor:props.counter.color}} onClick={() => props.countUp(props.counter)}>
             {props.counter.id}:{props.counter.count}
           </li>
         );
@@ -79,6 +79,7 @@
             <Counter
              counter = {counter}
              key={counter.id}
+             countUp = {props.countUp}
              />
           );
         });
@@ -96,16 +97,37 @@
             counters: [
               {id: 'A', count: 0, color: 'green'},
               {id: 'B', count: 0, color: 'silver'},
-              {id: 'C', count: 0, color: 'tomato'}
-            ]
+              {id: 'C', count: 0, color: 'tomato'},
+              {id: 'D', count: 0, color: 'skyblue'},
+              {id: 'E', count: 0, color: 'orange'}
+            ],
+            total: 0
           };
+          this.countUp = this.countUp.bind(this);
+        }
+        countUp(counter){
+          this.setState(prevState =>{
+            const counters = prevState.counters.map(counter =>{
+              return {id: counter.id, count : counter.count, color: counter.color};
+            });
+            const pos = counters.map(counter => {
+              return counter.id;
+            }).indexOf(counter.id);
+            counters[pos].count++;
+            return{
+              counters:counters,
+              total: prevState.total + 1
+            };
+          })
         }
         render(){
           return(
             <div className="container">
-              <CounterList counters={this.state.counters}/>
-
-              <div>TOTAL INVENTORY: 100</div>
+              <CounterList 
+                counters={this.state.counters}
+                countUp={this.countUp}
+                />
+              <div>TOTAL INVENTORY:{this.state.total}</div>
             </div>
           );
         }
